@@ -16,7 +16,7 @@ Este repositório guarda o layout da Touch Bar **e as alterações no aplicativo
 
 ## Funções que dependem do aplicativo personalizado
 
-- Dock que traz o aplicativo tocado para frente, sem pontos de apps abertos, com indicador de foco separado, mais espaço entre ícones e imagens de alta resolução.
+- Dock que traz o aplicativo tocado para frente e pede a reabertura da janela quando o app continua rodando sem janelas, usando a mesma instância. Sem pontos de apps abertos, com indicador de foco separado, mais espaço entre ícones e imagens de alta resolução.
 - Spotify em um bloco de largura fixa, centralizado na Touch Bar inteira.
 - Tamanhos de fonte e imagens ajustáveis por `fontSize` e `image.pointSize`.
 - Título longo que espera 2 segundos, desliza até o final, espera 2 segundos e volta ao início; o ciclo se repete. Títulos curtos ficam parados. A troca do título reinicia a animação; a consulta periódica da mesma música não a reinicia.
@@ -48,7 +48,7 @@ O aplicativo desta configuração foi testado em um Mac **Apple Silicon, com mac
 
 6. Abra o MTMR e conceda Acessibilidade e a permissão para controlar o Spotify quando solicitadas.
 
-O aplicativo instalado atualmente corresponde à versão `0.27-local.6`. O processo de compilação não instala nem abre o aplicativo automaticamente. O editor visual do projeto original não faz parte desta compilação; a configuração é editada no JSON.
+O aplicativo instalado atualmente corresponde à versão `0.27-local.7`. O processo de compilação não instala nem abre o aplicativo automaticamente. O editor visual do projeto original não faz parte desta compilação; a configuração é editada no JSON.
 
 ## Manter o preset atualizado
 

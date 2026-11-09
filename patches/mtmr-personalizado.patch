@@ -349,21 +349,63 @@
          stackView.orientation = .horizontal
          let visibleRect = self.scrollView.documentVisibleRect
          scrollView.documentView = stackView
-@@ -102,7 +102,12 @@
-         if bundleIdentifier!.contains("file://") {
-             NSWorkspace.shared.open(URL(fileURLWithPath: bundleIdentifier!.replacingOccurrences(of: "file://", with: "")))
+@@ -98,19 +98,45 @@
+     }
+     
+     public func switchToApp(app: DockItem) {
+-        let bundleIdentifier = app.bundleIdentifier
+-        if bundleIdentifier!.contains("file://") {
+-            NSWorkspace.shared.open(URL(fileURLWithPath: bundleIdentifier!.replacingOccurrences(of: "file://", with: "")))
++        guard let bundleIdentifier = app.bundleIdentifier else { return }
++        if bundleIdentifier.contains("file://") {
++            NSWorkspace.shared.open(URL(fileURLWithPath: bundleIdentifier.replacingOccurrences(of: "file://", with: "")))
          } else {
 -            NSWorkspace.shared.launchApplication(bundleIdentifier: bundleIdentifier!)
-+            if let running = NSRunningApplication.runningApplications(withBundleIdentifier: bundleIdentifier!).first {
++            let running = NSRunningApplication.runningApplications(withBundleIdentifier: bundleIdentifier).first
++            guard let applicationURL = running?.bundleURL ?? NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleIdentifier) else { return }
++            let configuration = NSWorkspace.OpenConfiguration()
++            configuration.activates = true
++            configuration.createsNewApplicationInstance = false
++
++            if let running = running {
 +                running.unhide()
-+                running.activate(options: [.activateAllWindows, .activateIgnoringOtherApps])
-+            } else {
-+                NSWorkspace.shared.launchApplication(bundleIdentifier: bundleIdentifier!)
++                // Activating alone cannot restore an app whose last window was
++                // closed. Deliver the standard Dock "reopen application" event,
++                // even when this app is already frontmost, using the same process.
++                configuration.appleEvent = NSAppleEventDescriptor(
++                    eventClass: AEEventClass(kCoreEventClass),
++                    eventID: AEEventID(kAEReopenApplication),
++                    targetDescriptor: NSAppleEventDescriptor(processIdentifier: running.processIdentifier),
++                    returnID: AEReturnID(kAutoGenerateReturnID),
++                    transactionID: AETransactionID(kAnyTransactionID)
++                )
++            }
++
++            NSWorkspace.shared.openApplication(at: applicationURL, configuration: configuration) { [weak self] application, error in
++                DispatchQueue.main.async {
++                    if let error = error {
++                        NSLog("Could not reopen %@: %@", bundleIdentifier, error.localizedDescription)
++                        return
++                    }
++                    application?.unhide()
++                    application?.activate(options: [.activateAllWindows])
++                    self?.softReloadItems()
++                }
 +            }
          }
          softReloadItems()
- 
-@@ -146,7 +151,7 @@
+-
+-        // NB: if you can't open app which on another space, try to check mark
+-        // "When switching to an application, switch to a Space with open windows for the application"
+-        // in Mission control settings
+-    }
+-    
++    }
++
+     //todo
+     private func handleLongPress(item: DockItem) {
+         if let pid = item.pid, let app = NSRunningApplication(processIdentifier: pid) {
+@@ -146,7 +172,7 @@
              
              runningAppsIdentifiers.append(bundleIdentifier)
  
@@ -372,7 +414,7 @@
              returnable.append(dockItem)
          }
          return returnable
-@@ -190,58 +195,93 @@
+@@ -190,58 +216,93 @@
      }
  }
  

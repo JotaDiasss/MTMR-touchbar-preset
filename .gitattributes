@@ -1,0 +1,2 @@
+# Stored patches preserve the upstream source's whitespace, including removed lines.
+patches/*.patch -whitespace
