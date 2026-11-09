@@ -2,7 +2,7 @@
   {
     "type": "staticButton",
     "title": " ",
-    "width": 8,
+    "width": 0,
     "align": "left",
     "bordered": false
   },
@@ -105,6 +105,13 @@
     "image": {
       "systemName": "sun.max.fill"
     }
+  },
+  {
+    "type": "staticButton",
+    "title": " ",
+    "width": 4,
+    "align": "right",
+    "bordered": false
   },
   {
     "type": "volume",
