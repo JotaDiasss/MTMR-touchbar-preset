@@ -2,6 +2,14 @@
 
 Este repositório guarda o layout da Touch Bar **e as alterações no aplicativo necessárias para reproduzir o resultado**. Apenas copiar `items.json` para o MTMR oficial não recupera todas as funções.
 
+## Presets disponíveis
+
+- `preset-completo-spotify.json`: cópia do preset completo, com Dock, Spotify, brilho e volume.
+- `preset-dock-control-strip.json`: somente o Dock, sem Spotify, brilho, volume ou espaçadores. Para usar com o Control Strip do macOS ativo.
+- `items.json`: arquivo original preservado, sem mudanças nesta criação dos presets.
+
+Para alternar, selecione o arquivo desejado como alvo nas preferências do MTMR. Os presets nomeados são independentes: mudanças em um não atualizam automaticamente os demais. A opção de mostrar o Control Strip é configurada separadamente no MTMR.
+
 ## O que está em cada lugar
 
 | Arquivo | Conteúdo |

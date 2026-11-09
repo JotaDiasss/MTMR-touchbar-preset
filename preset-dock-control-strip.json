@@ -1,0 +1,14 @@
+[
+  {
+    "type": "staticButton",
+    "title": " ",
+    "width": 0,
+    "align": "left",
+    "bordered": false
+  },
+  {
+    "type": "dock",
+    "width": 220,
+    "align": "left"
+  }
+]
