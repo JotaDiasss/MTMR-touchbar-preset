@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/Toxblh/MTMR",
+  "source_commit": "fd958e420074330be900f3c19a8a09ead93d998b",
+  "source_url": "https://codeload.github.com/Toxblh/MTMR/tar.gz/fd958e420074330be900f3c19a8a09ead93d998b",
+  "source_sha256": "38a2f74c00b79a89772c908d663881393abe4cf74115952f50823d2b549df3db",
+  "base_app_version": "0.27.0",
+  "base_app_url": "https://github.com/Toxblh/MTMR/releases/download/v0.27.0/MTMR.0.27.dmg",
+  "base_app_sha256": "cf0b1b8cb9d6758cd0b69d2c4c5f9f1a067416126a7daa76a8d94fea8189d608",
+  "custom_version": "0.27-local.6",
+  "tested_on": {
+    "architecture": "arm64",
+    "macOS": "27.2"
+  },
+  "patched_files": [
+    "MTMR/AppDelegate.swift",
+    "MTMR/BasicView.swift",
+    "MTMR/CustomButtonTouchBarItem.swift",
+    "MTMR/CustomSlider.swift",
+    "MTMR/ItemsParsing.swift",
+    "MTMR/TitleMarqueeMotion.swift",
+    "MTMR/TouchBarController.swift",
+    "MTMR/Widgets/AppScrubberTouchBarItem.swift"
+  ]
+}

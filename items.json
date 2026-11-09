@@ -24,7 +24,7 @@
     "bordered": false,
     "align": "center",
     "image": {
-      "filePath": "/Users/joaodias/Documents/Codex/2026-11-08/que/outputs/spotify.icns",
+      "filePath": "/Applications/Spotify.app/Contents/Resources/AppIcon.icns",
       "pointSize": 24
     },
     "refreshInterval": 2,
@@ -35,7 +35,8 @@
     "actionAppleScript": {
       "inline": "tell application \"Spotify\" to activate"
     },
-    "fontSize": 13
+    "fontSize": 13,
+    "marquee": true
   },
   {
     "type": "staticButton",
