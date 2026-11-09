@@ -1,0 +1,124 @@
+[
+  {
+    "type": "staticButton",
+    "title": " ",
+    "width": 8,
+    "align": "left",
+    "bordered": false
+  },
+  {
+    "type": "dock",
+    "width": 220,
+    "align": "left"
+  },
+  {
+    "type": "staticButton",
+    "title": " ",
+    "width": 24,
+    "align": "left",
+    "bordered": false
+  },
+  {
+    "type": "appleScriptTitledButton",
+    "width": 210,
+    "bordered": false,
+    "align": "center",
+    "image": {
+      "filePath": "/Users/joaodias/Documents/Codex/2026-11-08/que/outputs/spotify.icns",
+      "pointSize": 24
+    },
+    "refreshInterval": 2,
+    "source": {
+      "inline": "if application \"Spotify\" is running then\n tell application \"Spotify\"\n  try\n   return name of current track & \" – \" & artist of current track\n  end try\n end tell\nend if\nreturn \"Spotify\""
+    },
+    "action": "appleScript",
+    "actionAppleScript": {
+      "inline": "tell application \"Spotify\" to activate"
+    },
+    "fontSize": 13
+  },
+  {
+    "type": "staticButton",
+    "title": "",
+    "width": 40,
+    "bordered": false,
+    "action": "appleScript",
+    "actionAppleScript": {
+      "inline": "if application \"Spotify\" is running then\n tell application \"Spotify\" to previous track\nend if"
+    },
+    "image": {
+      "systemName": "backward.end.fill",
+      "pointSize": 15
+    },
+    "align": "center",
+    "fontSize": 13
+  },
+  {
+    "type": "appleScriptTitledButton",
+    "width": 32,
+    "bordered": false,
+    "refreshInterval": 0.2,
+    "source": {
+      "inline": "if application \"Spotify\" is running then\n tell application \"Spotify\"\n  if player state is playing then return {\" \", \"pause\"}\n end tell\nend if\nreturn {\" \", \"play\"}"
+    },
+    "action": "appleScript",
+    "actionAppleScript": {
+      "inline": "if application \"Spotify\" is running then\n tell application \"Spotify\" to playpause\nend if"
+    },
+    "alternativeImages": {
+      "pause": {
+        "systemName": "pause.fill",
+        "pointSize": 15
+      },
+      "play": {
+        "systemName": "play.fill",
+        "pointSize": 15
+      }
+    },
+    "image": {
+      "systemName": "play.fill",
+      "pointSize": 15
+    },
+    "align": "center",
+    "fontSize": 13
+  },
+  {
+    "type": "staticButton",
+    "title": "",
+    "width": 16,
+    "bordered": false,
+    "action": "appleScript",
+    "actionAppleScript": {
+      "inline": "if application \"Spotify\" is running then\n tell application \"Spotify\" to next track\nend if"
+    },
+    "image": {
+      "systemName": "forward.end.fill",
+      "pointSize": 15
+    },
+    "align": "center",
+    "fontSize": 13
+  },
+  {
+    "type": "brightness",
+    "width": 110,
+    "align": "right",
+    "image": {
+      "systemName": "sun.max.fill"
+    }
+  },
+  {
+    "type": "volume",
+    "width": 110,
+    "align": "right",
+    "image": {
+      "systemName": "speaker.wave.2.fill"
+    }
+  },
+  {
+    "type": "staticButton",
+    "title": " ",
+    "width": 0,
+    "align": "right",
+    "bordered": false
+  }
+]
